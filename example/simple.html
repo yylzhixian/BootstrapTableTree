@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Example</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../src/bootstrap.tableTree.css">
+    <style>
+        #table-tree {
+            margin-top: 100px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h1>Bootstrap Table Tree</h1>
+                <p>This is a lightweight jQeury plugin with Bootstrap style that can be used to create a table tree that can be expanded and collapsed.</p>
+            </div>
+            <div class="col-sm-8 col-sm-offset-2">
+                <h2>Example</h2>
+            </div>
+            <div id="table" class="col-sm-8 col-sm-offset-2"></div>
+            <div class="col-sm-8 col-sm-offset-2">
+                <h2>Usage instructions</h2>
+                <ol>
+                    <li>
+                        <h3>include style sheets</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>Please include the bootstrap.min.css,and make sure the bootstrap.min.css behide it.</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <pre>&lt;!-- Put these into the &lt;head&gt; --&gt;
+&lt;link rel="stylesheet" href="bootstrap.min.css"&gt;
+&lt;link rel="stylesheet" href="src/bootstrap.tableTree.css"&gt;</pre>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>include jQuery and tableTree</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>To use tableTree, you’ll need to make sure both the tableTree and jQuery scripts are included. If you’ve already got jQuery (you can test by opening your JavaScript console and typing !!window.jQuery — if it says true, you have jQuery), you don’t need to add the first line.</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <pre>&lt;script src="jquery-latest.min.js"&gt;&lt;/script&gt;
+&lt;script src="src/bootstrap.tableTree.js"&gt;&lt;/script&gt;</pre>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>HTML</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>Before create a table tree,it just needs a container to load the table.</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <pre>
+&lt;div id="table"&gt;&lt;/div&gt;</pre>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h3>Plug it all together</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>We’ve been through so much together, and I’m pleased to say the finish line is near. Our journey is almost over, just one more thing left to do. The JavaScript is on the right (make sure to put it in a script tag, and change #table to whatever your table’s element is).
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <pre>$(function() {
+    $('#table').tableTree({
+        data: dataList,  //json formatted table data
+        titles: titles,  //header data
+    });
+});</pre>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-sm-8 col-sm-offset-2">
+                <h2>Parameters</h2>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>Although it’s lightweight, table-tree comes with a range of options to customise your table. Here’s the default options provided. You can add, remove, or completely skip out the options object. It’s up to you.</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <pre>$(function() {
+    $('#table').tableTree({
+        data: dataList,            //json formatted table data
+        titles: titles,            //header text
+        headerSetting: {           //Header style settings
+            background-color: "#99CCCC",//Background color of the header
+            font-size: "16px",     //The text size of the header
+            color: "#ffffff"       //The text color of the header
+        },
+        cellSetting: {             //Cell style settings
+            color: "#4b5f72",      //The text color of the Cell
+            font-size: "16px"      //The text size of the Cell
+        },
+        oddRowBgColor: "#f7fafa",  //Odd line of background color
+        evenRowBgColor: "#ffffff", //Even line of background color
+        expanded: function(node) { //A callback function when a row is expanded
+            console.log('expanded');
+            console.log(node);
+        },
+        collapsed: function(node) {//A callback function when a row is folded
+            console.log('collapsed');
+            console.log(node);
+        }
+    });
+});</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="../src/bootstrap.tableTree.js"></script>
+<script type="text/javascript">
+    var titles = ['Movie Type', 'Movie Name', 'Release Time', 'Score'];
+    var dataList = [{
+        "data": ["Comedy", "", "", ""],
+        "children": [{
+            "data": ["", "3 Idiots", "2009-12-25", "9.1"],
+            "children": []
+        }, {
+            "data": ["", "Flipped", "2010-08-06", "8.9"],
+            "children": []
+        }, {
+            "data": ["", "The Gold Rush", "1925-06-26", "9.0"],
+            "children": []
+        }]
+    }, {
+        "data": ["Animation", "", "", ""],
+        "children": [{
+            "data": ["", "The Croods", "2013-03-22", "8.7"],
+            "children": []
+        }, {
+            "data": ["", "How to Train Your Dragon", "2010-03-26", "8.7"],
+            "children": []
+        }, {
+            "data": ["", "Up", "2009-05-29", "8.9"],
+            "children": []
+        }]
+    }];
+
+    $(function() {
+        $('#table').tableTree({
+            "data": dataList,
+            "titles": titles,
+            "expanded": function(node) {
+                console.log('expanded');
+                console.log(node);
+            },
+            "collapsed": function(node) {
+                console.log('collapsed');
+                console.log(node);
+            }
+        });
+    });
+
+</script>
+
+</html>
